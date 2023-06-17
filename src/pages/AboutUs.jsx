@@ -20,9 +20,11 @@ const AboutUs = () => {
               destination for exceptional dining. Discover a world of flavors at
               your doorstep!
             </p>
-            <button className="bg-[#f53739] px-4 py-2 rounded-3xl text-white">
-              Message us
-            </button>
+            <div className="flex justify-center lg:block">
+              <button className="bg-[#f53739] px-4 py-2 rounded-3xl text-white f">
+                Message us
+              </button>
+            </div>
           </div>
           <div>
             <img src={aboutPhoto} alt="" className="w-full h-full " />

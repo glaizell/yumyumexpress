@@ -6,7 +6,7 @@ import { VscQuote } from "react-icons/vsc";
 const CustomersFeedBack = () => {
   return (
     <section className="bg-[#fee6e6] mb-24">
-      <div className="container mx-auto md:h-screen p-4">
+      <div className="container lg:w-[768px] mx-auto md:h-screen p-4">
         <div>
           <div className="text-center mb-8">
             <h6 className="mb-4">Customers feedback</h6>

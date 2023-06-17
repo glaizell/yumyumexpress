@@ -8,9 +8,9 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <footer className="bg-black mt-16">
-      <div className="container mx-auto px-8 py-6 text-white lg:grid grid-cols-3 items-center">
-        <div className="mb-16">
-          <div className="lg:border-r border-white pr-4 flex flex-col items-center mr-8 col-span-2">
+      <div className="container mx-auto py-6 text-white lg:grid grid-cols-3 items-center">
+        <div className="mb-14 lg:mb-0">
+          <div className="lg:border-r border-white flex flex-col items-center lg:mr-8 col-span-2">
             <Link to="/">
               <img src={logo} alt="" className="mb-6" />
             </Link>
@@ -39,9 +39,9 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 col-span-2 justify-center gap-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 col-span-2 justify-center gap-y-16 px-8 lg:px-2 text-center lg:text-start">
           <div>
-            <h4 className="mb-6">Services</h4>
+            <h4 className="mb-4">Services</h4>
             <div className="text-sm">
               <p>Online Order</p>
               <p>Pre-Reservation</p>
@@ -50,7 +50,7 @@ const Footer = () => {
             </div>
           </div>
           <div>
-            <h4 className="mb-6">Quick Links</h4>
+            <h4 className="mb-4">Quick Links</h4>
             <div className="text-sm">
               <p>
                 <span className="cursor-pointer hover:text-gray-400">Menu</span>
@@ -73,7 +73,7 @@ const Footer = () => {
             </div>
           </div>
           <div>
-            <h4 className="mb-6">About</h4>
+            <h4 className="mb-4">About</h4>
             <div className="text-sm">
               <p>Our Story</p>
               <p>Career</p>
@@ -82,7 +82,7 @@ const Footer = () => {
             </div>
           </div>
           <div>
-            <h4 className="mb-6">Help</h4>
+            <h4 className="mb-4">Help</h4>
             <div className="text-sm">
               <p>Contact</p>
               <p>Support</p>

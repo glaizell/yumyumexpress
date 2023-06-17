@@ -1,13 +1,17 @@
 import logo from "../../assets/image/logo@0.25x.png";
 import { BsFillCartCheckFill } from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
+
 import { NavLink } from "react-router-dom";
 import { useContext, useState, useEffect } from "react";
 import CartContext from "../../hooks/context/cart-context";
+import Sidebar from "./Sidebar";
 
 const Header = ({ onShowCart }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [btnIsHighlighted, setBtnIsHighlighted] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
   const ctx = useContext(CartContext);
 
   const numberOfItems = ctx.items.reduce((currentNum, item) => {
@@ -16,19 +20,13 @@ const Header = ({ onShowCart }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollPos = window.pageYOffset;
-      if (currentScrollPos > 0) {
+      if (window.scrollY >= 90) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
       }
     };
-
     window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
   }, []);
 
   useEffect(() => {
@@ -46,19 +44,20 @@ const Header = ({ onShowCart }) => {
     };
   }, [ctx.items]);
 
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
   return (
     <header
-      className={`w-full mx-auto px-4 flex  items-center  justify-between mb-8 sticky top-0 z-30 
-      ${isScrolled ? "bg-gray-100 shadow-md" : "bg-transparent"}`}
+      className={`w-full mx-auto px-4 z-[100] flex items-center justify-between mb-8 sticky top-0
+    ${isScrolled ? "bg-gray-100 shadow-md z-[100]" : "bg-transparent"}`}
     >
-      <div className="md:hidden flex items-center">
-        <GiHamburgerMenu className="text-2xl cursor-pointer" />
-      </div>
       <div>
         <img src={logo} alt="" height="75px" width="75px" />
       </div>
 
-      <ul className="hidden md:flex space-x-16">
+      <ul className="hidden md:flex space-x-16 ">
         <NavLink to="/" className="hover:border-b-2 border-[#F20507]" end>
           <li>Home</li>
         </NavLink>
@@ -86,7 +85,19 @@ const Header = ({ onShowCart }) => {
           <span>My Cart</span>
         </button>
       </div>
+
+      <div onClick={toggleSidebar} className="md:hidden">
+        <GiHamburgerMenu className="text-2xl cursor-pointer" />
+      </div>
+      {/* Mobile Menu */}
+      {/* Overlay */}
+      <Sidebar
+        setIsSidebarOpen={setIsSidebarOpen}
+        toggleSidebar={toggleSidebar}
+        isSidebarOpen={isSidebarOpen}
+      />
     </header>
   );
 };
+
 export default Header;

@@ -1,6 +1,6 @@
 const ContactUsForm = () => {
   return (
-    <section className="text-white">
+    <section className="text-white ">
       <h2>Send us message</h2>
       <form action="">
         <div className="mb-4 flex flex-col">
