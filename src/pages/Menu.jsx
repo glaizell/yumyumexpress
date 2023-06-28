@@ -4,15 +4,17 @@ import { useState } from "react";
 
 import MenuItem from "../components/menu/MenuItem.jsx";
 
-import indiaFlag from ".././assets/image/flags/icons8-india-48.png";
-import italyFlag from ".././assets/image/flags/icons8-italy-48.png";
-import thaiFlag from ".././assets/image/flags/icons8-thailand-48.png";
-import koreaFlag from ".././assets/image/flags/icons8-south-korea-48.png";
-import mexicoFlag from ".././assets/image/flags/icons8-mexico-48.png";
-import japanFlag from ".././assets/image/flags/icons8-japan-48.png";
-import world from ".././assets/image/flags//icons8-world-48.png";
 import MealDetails from "../components/modal/MealDetails.jsx";
 import SearchInput from "../components/menu/SearchInput.jsx";
+
+import { FaPizzaSlice } from "react-icons/fa";
+import { GiTacos } from "react-icons/gi";
+import { FaUtensils } from "react-icons/fa";
+import { FaFish } from "react-icons/fa";
+import { GiChiliPepper } from "react-icons/gi";
+
+import { MdSoupKitchen } from "react-icons/md";
+import { FaPepperHot } from "react-icons/fa";
 
 const Menu = () => {
   const [menuIsShown, setMenuIsShown] = useState(false);
@@ -37,26 +39,24 @@ const Menu = () => {
     (menu, index, self) =>
       index === self.findIndex((m) => m.cuisineType === menu.cuisineType)
   );
-
   const getCuisineIcon = (cuisineType) => {
     switch (cuisineType) {
       case "Italian":
-        return <img src={italyFlag} alt="" />;
+        return <FaPizzaSlice className="w-6 h-6" />;
       case "Japanese":
-        return <img src={japanFlag} alt="" />;
+        return <FaFish className="w-6 h-6" />;
       case "Korean":
-        return <img src={koreaFlag} alt="" />;
+        return <GiChiliPepper className="w-6 h-6" />;
       case "Mexican":
-        return <img src={mexicoFlag} alt="" />;
+        return <GiTacos className="w-6 h-6" />;
       case "Thai":
-        return <img src={thaiFlag} alt="" />;
+        return <MdSoupKitchen className="w-6 h-6" />;
       case "Indian":
-        return <img src={indiaFlag} alt="" />;
+        return <FaPepperHot className="w-6 h-6" />;
       default:
         return;
     }
   };
-
   const filteredMenus = isRootMenu // Use isRootMenu to determine if all menus should be displayed
     ? menus
     : cuisineType
@@ -82,18 +82,23 @@ const Menu = () => {
         </div>
 
         <div className="mb-20">
-          <ul className="flex justify-between items-center px-4 py-2 bg-white shadow-md rounded-3xl overflow-hidden">
+          <ul className="flex justify-around items-center px-4 py-2 bg-white shadow-md rounded-3xl overflow-hidden">
             <div className="flex flex-col items-center justify-center">
-              <img src={world} alt="" />
-              <Link to="/menu" className="hover:text-red-500">
+              <FaUtensils className="w-6 h-6" />
+              <Link to="/menu" className="mt-2 hover:text-red-500">
                 ALL
               </Link>
             </div>
 
             {cuisineTypes.map((menu) => (
-              <div key={menu.id}>
+              <div
+                key={menu.id}
+                className="flex flex-col items-center justify-center"
+              >
                 {getCuisineIcon(menu.cuisineType)}
-                <Link to={`/menu/${menu.cuisineType}`}>{menu.cuisineType}</Link>
+                <Link to={`/menu/${menu.cuisineType}`} className="mt-2">
+                  {menu.cuisineType}
+                </Link>
               </div>
             ))}
           </ul>

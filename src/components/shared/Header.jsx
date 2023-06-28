@@ -50,8 +50,8 @@ const Header = ({ onShowCart }) => {
 
   return (
     <header
-      className={`w-full mx-auto px-4 z-[100] flex items-center justify-between mb-8 sticky top-0
-    ${isScrolled ? "bg-gray-100 shadow-md z-[100]" : "bg-transparent"}`}
+      className={`w-full mx-auto px-4 z-[99] flex items-center justify-between mb-8 sticky top-0
+    ${isScrolled ? "bg-gray-100 shadow-md z-[99]" : "bg-transparent"}`}
     >
       <div>
         <img src={logo} alt="" height="75px" width="75px" />

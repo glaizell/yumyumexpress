@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 const Backdrop = (props) => {
   return (
     <div
-      className="fixed top-0 left-0 w-full h-screen z-40 bg-black bg-opacity-75
+      className="fixed top-0 left-0 w-full h-screen z-[888] bg-black bg-opacity-75
  backdrop-blur "
       onClick={props.onHide}
     />
@@ -13,8 +13,10 @@ const Backdrop = (props) => {
 
 const ModalOverlay = (props) => {
   return (
-    <div className=" fixed top-[10vh] left-1/2 transform -translate-x-1/2 w-1/3 min-h-min max-h-[90vh] mb-8 px-8 py-4 rounded-lg z-50 bg-[#F1F0F3] ">
-      <div>{props.children}</div>
+    <div className="rounded-lg bg-red-500">
+      <div className=" w-[80%] sm:w-8/12 md:w-1/2 lg:w-1/3 fixed top-[24vh] left-1/2 transform -translate-x-1/2  min-h-min max-h-[70vh] mb-8  z-[999] overflow-y-scroll">
+        <div>{props.children}</div>
+      </div>
     </div>
   );
 };
